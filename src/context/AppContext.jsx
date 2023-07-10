@@ -11,7 +11,7 @@ export function AppContextProvider({children}){
 
     async function fetchData(page){
         setLoading(true);
-        let url = `${baseUrl}?page=${page = 1}`
+        let url = `${baseUrl}?page=${page}`
         try {
             let result = await fetch (url)
             let response = await result.json(); 
