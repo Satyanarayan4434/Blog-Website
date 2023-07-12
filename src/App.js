@@ -7,7 +7,7 @@ import {useContext,useEffect} from 'react';
 
 
 function App() {
-  const {fetchData} =useContext(AppContext);
+  const {fetchData} = useContext(AppContext);
   useEffect(() => {
     fetchData();
   }, []);
