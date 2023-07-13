@@ -9,9 +9,15 @@ export function AppContextProvider({children}){
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(null);
 
-    async function fetchData(page){
+    async function fetchData(page, tag=null, category){
         setLoading(true);
         let url = `${baseUrl}?page=${page}`;
+        if(tag){
+            url = `${url}&tag=${tag}`
+        }
+        if(category){
+            url =`${url}&category=${category}`
+        }
         try {
             let result = await fetch (url)
             let response = await result.json(); 
@@ -36,7 +42,8 @@ export function AppContextProvider({children}){
         page,
         totalPage,
         fetchData,
-        handleChange
+        handleChange,
+        setLoading
     }
     return(
         <AppContext.Provider value={value}>
